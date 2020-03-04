@@ -38,7 +38,7 @@
 
 @end
 
-@interface ViewController()
+@interface ViewController()<UITableViewDataSource>
 
 
 @end
@@ -95,8 +95,24 @@
     //    [view2 addGestureRecognizer:tapGesture];
     
     UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
+    tableView.dataSource = self;
+    
     [self.view addSubview:tableView];
 }
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 20;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"id"];
+    cell.textLabel.text = @"主标题";
+    cell.detailTextLabel.text = @"副标题";
+    cell.imageView.image = [UIImage imageNamed:@"icon.bundle/video@2x.png"];
+    return cell;
+}
+
 
 - (void)pushController{
     
