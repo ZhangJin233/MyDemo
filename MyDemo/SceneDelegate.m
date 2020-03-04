@@ -18,13 +18,13 @@
     
     ViewController *viewController = [[ViewController alloc] init];
     
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    
     
     //    UIViewController *controller1 = [[UIViewController alloc] init];
     //    controller1.view.backgroundColor = [UIColor whiteColor];
-    navigationController.tabBarItem.title = @"新闻";
-    navigationController.tabBarItem.image = [UIImage imageNamed:@"icon.bundle/page@2x.png"];
-    navigationController.tabBarItem.selectedImage = [UIImage imageNamed:@"icon.bundle/page_selected@2x.png"];
+    viewController.tabBarItem.title = @"新闻";
+    viewController.tabBarItem.image = [UIImage imageNamed:@"icon.bundle/page@2x.png"];
+    viewController.tabBarItem.selectedImage = [UIImage imageNamed:@"icon.bundle/page_selected@2x.png"];
     
     
     UIViewController *controller2 = [[UIViewController alloc] init];
@@ -45,10 +45,16 @@
     controller4.tabBarItem.image = [UIImage imageNamed:@"icon.bundle/home@2x.png"];
     controller4.tabBarItem.selectedImage = [UIImage imageNamed:@"icon.bundle/home_selected@2x.png"];
     
-    [tabbarConttroller setViewControllers:@[navigationController,controller2,controller3,controller4]];
+    [tabbarConttroller setViewControllers:@[viewController,controller2,controller3,controller4]];
     
+    //    UIWindow创建
+    //    1、创建UIWindow
+    //    2、设置rootViewController
+    //    3、makeKeyAndVisible
     
-    self.window.rootViewController = tabbarConttroller;
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:tabbarConttroller];
+    
+    self.window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
 }
 
