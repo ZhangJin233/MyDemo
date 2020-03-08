@@ -58,6 +58,7 @@
         [self.contentView addSubview:({
             self.rightImageView = [[UIImageView alloc] initWithFrame:CGRectMake(280, 15, 70, 70)];
             self.rightImageView.backgroundColor = [UIColor redColor];
+            self.rightImageView.contentMode = UIViewContentModeScaleAspectFill;
             self.rightImageView;
         })];
     }
