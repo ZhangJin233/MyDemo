@@ -7,36 +7,37 @@
 //
 
 #import "ViewController.h"
+#import "GTNormalTableViewCell.h"
 
 @interface TestView : UIView
 @end
 
-@implementation TestView
-
-- (instancetype) init{
-    self = [super init];
-    if(self){
-        
-    }
-    return self;
-}
-
-- (void)willMoveToSuperview:(nullable UIView *)newSuperview{
-    [super willMoveToSuperview:newSuperview];
-    
-}
-- (void)didMoveToSuperview{
-    [super didMoveToSuperview];
-}
-- (void)willMoveToWindow:(nullable UIWindow *)newWindow{
-    [super willMoveToWindow:newWindow];
-}
-- (void)didMoveToWindow{
-    [super didMoveToWindow];
-    
-}
-
-@end
+//@implementation TestView
+//
+//- (instancetype) init{
+//    self = [super init];
+//    if(self){
+//
+//    }
+//    return self;
+//}
+//
+//- (void)willMoveToSuperview:(nullable UIView *)newSuperview{
+//    [super willMoveToSuperview:newSuperview];
+//
+//}
+//- (void)didMoveToSuperview{
+//    [super didMoveToSuperview];
+//}
+//- (void)willMoveToWindow:(nullable UIWindow *)newWindow{
+//    [super willMoveToWindow:newWindow];
+//}
+//- (void)didMoveToWindow{
+//    [super didMoveToWindow];
+//
+//}
+//
+//@end
 
 @interface ViewController()<UITableViewDataSource,UITableViewDelegate>
 
@@ -53,24 +54,24 @@
     return self;
 }
 
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-}   // Called when the view is about to made visible. Default does nothing
-
-
-- (void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-}    // Called when the view has been fully transitioned onto the screen. Default does nothing
-
-
-- (void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-} // Called when the view is dismissed, covered or otherwise hidden. Default does nothing
-
-
-- (void)viewDidDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];
-}  // Called after the view was dismissed, covered or otherwise hidden. Default does nothing
+//- (void)viewWillAppear:(BOOL)animated{
+//    [super viewWillAppear:animated];
+//}   // Called when the view is about to made visible. Default does nothing
+//
+//
+//- (void)viewDidAppear:(BOOL)animated{
+//    [super viewDidAppear:animated];
+//}    // Called when the view has been fully transitioned onto the screen. Default does nothing
+//
+//
+//- (void)viewWillDisappear:(BOOL)animated{
+//    [super viewWillDisappear:animated];
+//} // Called when the view is dismissed, covered or otherwise hidden. Default does nothing
+//
+//
+//- (void)viewDidDisappear:(BOOL)animated{
+//    [super viewDidDisappear:animated];
+//}  // Called after the view was dismissed, covered or otherwise hidden. Default does nothing
 
 
 - (void)viewDidLoad {
@@ -113,6 +114,9 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    NSLog(@"scrollViewDidScroll");
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 20;
@@ -121,16 +125,18 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"id"];
-    
+    GTNormalTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"id"];
+    cell.backgroundColor = [UIColor whiteColor];
     if(!cell){
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"id"];
+        cell = [[GTNormalTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"id"];
     }
     
     //    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"id"];
-    cell.textLabel.text = [NSString stringWithFormat:@"主标题 - %@",@(indexPath.row)];
-    cell.detailTextLabel.text = @"副标题";
-    cell.imageView.image = [UIImage imageNamed:@"icon.bundle/video@2x.png"];
+    //    cell.textLabel.text = [NSString stringWithFormat:@"主标题 - %@",@(indexPath.row)];
+    //    cell.detailTextLabel.text = @"副标题";
+    //    cell.imageView.image = [UIImage imageNamed:@"icon.bundle/video@2x.png"];
+    [cell layoutTableViewCell];
+
     return cell;
 }
 
