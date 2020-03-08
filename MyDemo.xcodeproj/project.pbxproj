@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		847F83BB240EB7A8005595D2 /* icon.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 847F83BA240EB7A8005595D2 /* icon.bundle */; };
+		84BFA77A24153BAA00EBBAB3 /* GTDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BFA77924153BAA00EBBAB3 /* GTDetailViewController.m */; };
 		84DB63F723CADCD800D911B2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DB63F623CADCD800D911B2 /* AppDelegate.m */; };
 		84DB63FA23CADCD800D911B2 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DB63F923CADCD800D911B2 /* SceneDelegate.m */; };
 		84DB63FD23CADCD800D911B2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DB63FC23CADCD800D911B2 /* ViewController.m */; };
@@ -41,6 +42,8 @@
 
 /* Begin PBXFileReference section */
 		847F83BA240EB7A8005595D2 /* icon.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = icon.bundle; path = "../geektime-ios-course/project/SampleApp/icon.bundle"; sourceTree = "<group>"; };
+		84BFA77824153BAA00EBBAB3 /* GTDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTDetailViewController.h; sourceTree = "<group>"; };
+		84BFA77924153BAA00EBBAB3 /* GTDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTDetailViewController.m; sourceTree = "<group>"; };
 		84DB63F223CADCD700D911B2 /* MyDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84DB63F523CADCD800D911B2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		84DB63F623CADCD800D911B2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -133,6 +136,8 @@
 				84E0836B2414C84C00CF7B64 /* GTRecommendViewController.m */,
 				84E0836D2414DFE900CF7B64 /* GTNormalTableViewCell.h */,
 				84E0836E2414DFE900CF7B64 /* GTNormalTableViewCell.m */,
+				84BFA77824153BAA00EBBAB3 /* GTDetailViewController.h */,
+				84BFA77924153BAA00EBBAB3 /* GTDetailViewController.m */,
 			);
 			path = MyDemo;
 			sourceTree = "<group>";
@@ -286,6 +291,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84BFA77A24153BAA00EBBAB3 /* GTDetailViewController.m in Sources */,
 				84E0836F2414DFE900CF7B64 /* GTNormalTableViewCell.m in Sources */,
 				84DB63FD23CADCD800D911B2 /* ViewController.m in Sources */,
 				84E083692411415E00CF7B64 /* GTVideoViewController.m in Sources */,
