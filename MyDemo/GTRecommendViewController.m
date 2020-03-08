@@ -8,7 +8,7 @@
 
 #import "GTRecommendViewController.h"
 
-@interface GTRecommendViewController ()
+@interface GTRecommendViewController ()<UIScrollViewDelegate>
 
 @end
 
@@ -35,6 +35,8 @@
     scrollView.contentSize = CGSizeMake(self.view.bounds.size.width * 5, self.view.bounds.size.height);
     //    scrollView.showsHorizontalScrollIndicator = NO;
     
+    scrollView.delegate = self;
+    
     NSArray *colorArray = @[[UIColor redColor],[UIColor blueColor],[UIColor yellowColor],[UIColor lightGrayColor],[UIColor grayColor]];
     for(int i = 0;i < 5; i++){
         [scrollView addSubview:({
@@ -43,7 +45,7 @@
             view;
         })];
     }
-    scrollView.pagingEnabled = YES;
+    //    scrollView.pagingEnabled = YES;
     [self.view addSubview:scrollView];
 }
 
@@ -56,5 +58,34 @@
  // Pass the selected object to the new view controller.
  }
  */
+
+
+// any offset changes
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    //    NSLog(@"scrollViewDidScrollv - %@",@(scrollView.contentOffset.x));
+}
+
+
+
+// called on start of dragging (may require some time and or distance to move)
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    NSLog(@"BeginDragging");
+}
+
+
+// called on finger up if the user dragged. decelerate is true if it will continue moving afterwards
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    NSLog(@"EndDragging");
+}
+
+// called on finger up as we are moving
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView{
+    
+}
+
+// called when scroll view grinds to a halt
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    
+}
 
 @end
