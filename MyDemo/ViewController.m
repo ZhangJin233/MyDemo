@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "GTNormalTableViewCell.h"
 #import "GTDetailViewController.h"
+#import "GTDeleteCellView.h"
 
 @interface TestView : UIView
 @end
@@ -40,7 +41,7 @@
 //
 //@end
 
-@interface ViewController()<UITableViewDataSource,UITableViewDelegate>
+@interface ViewController()<UITableViewDataSource,UITableViewDelegate,GTNormalTableViewCellDelegate>
 
 
 @end
@@ -130,6 +131,7 @@
     cell.backgroundColor = [UIColor whiteColor];
     if(!cell){
         cell = [[GTNormalTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"id"];
+        cell.delegate = self;
     }
     
     //    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"id"];
@@ -139,6 +141,11 @@
     [cell layoutTableViewCell];
 
     return cell;
+}
+
+- (void)tableViewCell:(UITableViewCell *)tableViewCell clickDeleteButton:(UIButton *)deleteButton{
+    GTDeleteCellView *deleteView = [[GTDeleteCellView alloc] initWithFrame:self.view.bounds];
+    [deleteView showDeleteView];
 }
 
 
