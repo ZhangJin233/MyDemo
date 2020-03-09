@@ -42,6 +42,8 @@
 //@end
 
 @interface ViewController()<UITableViewDataSource,UITableViewDelegate,GTNormalTableViewCellDelegate>
+@property(nonatomic,strong,readwrite) UITableView *tableView;
+@property(nonatomic,strong,readwrite) NSMutableArray *dataArray;
 
 
 @end
@@ -51,7 +53,10 @@
 - (instancetype)init{
     self = [super init];
     if(self){
-        
+        _dataArray = @[].mutableCopy;
+        for(int i = 0;i<20;i++){
+            [_dataArray addObject:@(i)];
+        }
     }
     return self;
 }
@@ -97,13 +102,13 @@
     //    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pushController)];
     //    [view2 addGestureRecognizer:tapGesture];
     
-    UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
-    tableView.dataSource = self;
+    _tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
+    _tableView.dataSource = self;
     
-    tableView.delegate = self;
+    _tableView.delegate = self;
     
     
-    [self.view addSubview:tableView];
+    [self.view addSubview:_tableView];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -121,7 +126,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 20;
+    return _dataArray.count;
 }
 
 
@@ -139,13 +144,22 @@
     //    cell.detailTextLabel.text = @"副标题";
     //    cell.imageView.image = [UIImage imageNamed:@"icon.bundle/video@2x.png"];
     [cell layoutTableViewCell];
-
+    
     return cell;
 }
 
 - (void)tableViewCell:(UITableViewCell *)tableViewCell clickDeleteButton:(UIButton *)deleteButton{
     GTDeleteCellView *deleteView = [[GTDeleteCellView alloc] initWithFrame:self.view.bounds];
-    [deleteView showDeleteView];
+    
+    CGRect rect = [tableViewCell convertRect:deleteButton.frame toView:nil];
+    
+    __weak typeof (self) wself = self;
+    
+    [deleteView showDeleteViewFromPoint:rect.origin clickBlock:^{
+        __strong typeof(self)strongSelf = wself;
+        [strongSelf.dataArray removeLastObject];
+        [strongSelf.tableView deleteRowsAtIndexPaths:@[[strongSelf.tableView indexPathForCell:tableViewCell]] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }];
 }
 
 
